@@ -118,7 +118,7 @@ test.dropna(inplace=True)
 if train_models:
     nb_pipeline, log_pipeline, svm_pipeline = ml_train_tier(train)
 else:
-    nb_pipeline, log_pipeline, svm_pipeline = load_models(train)
+    nb_pipeline, log_pipeline, svm_pipeline = load_models(model_pth)
 
 ml_eval_tier(test, nb_pipeline, log_pipeline, svm_pipeline, terms)
 

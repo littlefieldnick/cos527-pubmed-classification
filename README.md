@@ -69,9 +69,57 @@ acute rheumatic arthritis                  0                             27     
 ```
 
 #### Logistic Regression
+The classification report on the test set for logistic regression is shown below:
+
+```
+                               precision    recall  f1-score   support
+
+abnormalities, cardiovascular       0.99      0.99      0.99     11370
+    acute rheumatic arthritis       0.78      0.89      0.83       369
+                disease, lyme       1.00      0.94      0.97       661
+          knee osteoarthritis       0.99      0.98      0.99      3149
+
+                     accuracy                           0.99     15549
+                    macro avg       0.94      0.95      0.94     15549
+                 weighted avg       0.99      0.99      0.99     15549
+```
+
+The confusion matrix for the test set is:
+
+```
+                               disease, lyme  abnormalities, cardiovascular  knee osteoarthritis  acute rheumatic arthritis
+disease, lyme                            621                             29                    5                          6
+abnormalities, cardiovascular              1                          11294                    9                         66
+knee osteoarthritis                        0                             55                 3073                         21
+acute rheumatic arthritis                  0                             39                    2                        328
+```
 
 #### Support Vector Machine
+The classification report on the test set for the support vector machine is shown below:
 
+```
+                               precision    recall  f1-score   support
+
+abnormalities, cardiovascular       0.99      0.99      0.99     11370
+    acute rheumatic arthritis       0.86      0.88      0.87       369
+                disease, lyme       1.00      0.97      0.98       661
+          knee osteoarthritis       0.99      0.99      0.99      3149
+
+                     accuracy                           0.99     15549
+                    macro avg       0.96      0.96      0.96     15549
+                 weighted avg       0.99      0.99      0.99     15549
+
+```
+
+The confusion matrix for the test set is:
+
+```
+                               disease, lyme  abnormalities, cardiovascular  knee osteoarthritis  acute rheumatic arthritis
+disease, lyme                            640                             15                    4                          2
+abnormalities, cardiovascular              0                          11312                   16                         42
+knee osteoarthritis                        2                             34                 3103                         10
+acute rheumatic arthritis                  0                             41                    4                        324
+```
 ### Conclusions
 
 ### Discussion
