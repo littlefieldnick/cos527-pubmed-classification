@@ -30,6 +30,19 @@ from nltk.stem import PorterStemmer
 from sklearn.model_selection import train_test_split
 
 def preprocess_document(text_data):
+    """
+    Preprocess an abstract.
+
+    Parameters
+    ----------
+    text_data : 
+        A single abstract text
+
+    Returns
+    -------
+    Preprocessed string
+
+    """
     # Helpers for preprocessing
     stop_list = stopwords.words('english')
     tokenizer = RegexpTokenizer("\w+")
@@ -55,13 +68,36 @@ def preprocess_document(text_data):
 
 
 def gen_train_test_split(abstracts, test_size=0.2):
+    """
+    Generate a train/test dataset
+
+    Parameters
+    ----------
+    abstracts : 
+        Abstract dataset
+    test_size : optional
+        Size of test set. The default is 0.2.
+
+    Returns
+    -------
+    train : 
+        train dataset
+    test : 
+        test dataset
+
+    """
+    # Split into X and y
     X = abstracts["text"]
     y = abstracts["class"]
+    
+    # Make splits
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
+    # Apply preprocessing to the abstracts
     X_train = X_train.apply(preprocess_document)
     X_test = X_test.apply(preprocess_document)
 
+    # Make train and test dataframe
     train = pd.DataFrame({
         "text": X_train,
         "class": y_train
@@ -72,6 +108,7 @@ def gen_train_test_split(abstracts, test_size=0.2):
         "class": y_test    
     })
 
+    # Return results
     return train, test
 
 
