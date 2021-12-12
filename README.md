@@ -43,6 +43,30 @@ By using this pipeline when it comes time to evaluate the model, the pipeline wi
 The results for each of the machine learning algorithms are below. For each model, the confusion matrix, F1 score, precision, recall, and support are provided. 
 
 #### Naive Bayes
+The classification report on the test set for Naive Bayes is shown below:
+
+```
+                               precision    recall  f1-score   support
+
+abnormalities, cardiovascular       0.98      0.97      0.98     11370
+    acute rheumatic arthritis       0.37      0.91      0.53       369
+                disease, lyme       1.00      0.59      0.74       661
+          knee osteoarthritis       0.99      0.94      0.97      3149
+
+                     accuracy                           0.95     15549
+                    macro avg       0.84      0.85      0.80     15549
+                 weighted avg       0.97      0.95      0.96     15549
+```
+
+The confusion matrix for the test set is:
+
+```
+                               disease, lyme  abnormalities, cardiovascular  knee osteoarthritis  acute rheumatic arthritis
+disease, lyme                            389                             81                    1                        190
+abnormalities, cardiovascular              0                          11069                   10                        291
+knee osteoarthritis                        0                             84                 2970                         95
+acute rheumatic arthritis                  0                             27                    5                        337
+```
 
 #### Logistic Regression
 

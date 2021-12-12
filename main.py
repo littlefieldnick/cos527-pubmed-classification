@@ -23,7 +23,7 @@ from ml import save_models, load_models, train_nb_pipeline, train_svm_pipeline, 
         train_logistic_regression_pipeline, \
         eval_model
 
-train_models = True
+train_models = False
 data_pth = "/Users/nicklittlefield/Desktop/cos527-pubmed-classification/data/"
 model_pth = "/Users/nicklittlefield/Desktop/cos527-pubmed-classification/saved_models/"
 
@@ -38,7 +38,7 @@ def data_access_tier(terms, entrez_params, start_date, end_date=None, batch_size
     abstracts = api.get_data()
     
     # Save them to file
-    abstracts.to_csv(data_pth + "abstract.csv")
+    abstracts.to_csv(data_pth + "abstract.csv", index=False)
     
 
 def preprocess_tier(abstract_pth):
@@ -47,9 +47,10 @@ def preprocess_tier(abstract_pth):
     train, test = gen_train_test_split(abstracts)
     
     # Save the outputs
-    train.to_csv("data/train.csv", index=False)
-    test.to_csv("data/test.csv", index=False)
+    train.to_csv(data_pth + "train.csv", index=False)
+    test.to_csv(data_pth + "test.csv", index=False)
 
+    return train, test
 
 def ml_train_tier(train_data, save_pipelines=True):
     nb_pipeline = train_nb_pipeline(train)
@@ -101,12 +102,7 @@ if not os.path.exists(data_pth + "abstract.csv"):
 
 # Check if train and test splits if they don't exist generate the splits and save them
 if not os.path.exists(data_pth + "train.csv") or not os.path.exists(data_pth + "test.csv"):
-    # Load abstracts
-    abstracts = pd.read_csv("data/abstracts.csv")
-    abstracts.dropna(inplace=True) # NaNs are in the dataset... Not sure why, so lets drop them.
-
-    # Get train/test splits
-    train, test = gen_train_test_split(abstracts)
+    train, test = preprocess_tier(data_pth + "abstract.csv")
 else:
     train = pd.read_csv(data_pth + "train.csv")
     test = pd.read_csv(data_pth + "test.csv")
