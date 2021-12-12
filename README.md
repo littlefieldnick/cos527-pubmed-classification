@@ -145,7 +145,7 @@ Next, the models are limited to only the abstracts downloaded when first run. Th
 
 Lastly, the application is restricted to using four different classes of diseases. It would be useful to have a way to expand the classes of abstracts being downloaded. Additionally, other machine learning models such as decision trees or even deep learning could be used to try and train additional models that may perform better. 
 
-### Steps to Run Application
+# Steps to Run Application
 1. Open `download_abstract.py` and set your email to download abstracts
 2. Open `main.py` and update `data_pth` and `model_pth` to reflect location the location this repo is located.  If training models from scratch, set `train_models=True` (if using the pretrained model included in the repo keep `train_models=False`)
 3. Open terminal `cd` to the directory of the project. Run `main.py` using the following command `python main.py`
